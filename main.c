@@ -13,15 +13,10 @@
 #use RS232(BAUD=9600, XMIT=TX_232, RCV=RX_232, stream = uart, BITS=8, PARITY=N, STOP=1)
 #use fast_io(c)
 
-void cadena( char *cadenaVector1,int *contador1,int *flag1){
-   cadenaVector1[contador1]=getch(uart);
-      if(cadenaVector1[contador1]>=42 && cadenaVector1[contador1]<=62){ 
-         fprintf(uart,"%c ",cadenaVector1[contador1]);
-         if(cadenaVector1[contador1]=='<'){
-            flag1=1;
-         }
-      contador1++;
-      } 
+char cadena(){
+   char cadenaVector;
+   cadenaVector=getch(uart);
+   return cadenaVector;
 }
 
 void main(void) {
@@ -31,8 +26,14 @@ void main(void) {
    int contador =0;
    while (1) {
    if(kbhit()){
-      cadena(*cadenaVector, *contador, *flag);
-      fprintf(uart,"%d",contador);
+      cadenaVector[contador]cadena();
+      if(cadenaVector1[contador1]>=42 && cadenaVector1[contador1]<=62){ 
+         fprintf(uart,"%c ",cadenaVector1[contador1]);
+         if(cadenaVector1[contador1]=='<'){
+            flag1=1;
+         }
+      contador1++;
+      } 
    } 
    
    if(flag==TRUE){
